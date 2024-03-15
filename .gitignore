@@ -1,0 +1,11 @@
+.vscode
+.eslintcache
+**/*.log
+node_modules
+mobile/playcanvas/scripts/index.iife.js
+mobile/playcanvas/scripts/style.css
+types
+.idea
+.DS_Store
+.reports
+coverage

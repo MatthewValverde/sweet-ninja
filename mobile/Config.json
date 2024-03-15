@@ -1,0 +1,74 @@
+{
+    "fields": [
+        {
+            "name": "design",
+            "description": "Configuration for customizable design elements",
+            "fields": [
+                {
+                    "name": "colors",
+                    "description": "Customizable colors used in the game",
+                    "fields": [
+                        {
+                            "name": "primary",
+                            "default": "#228FFF",
+                            "description": "The primary color used in the game",
+                            "type": "color"
+                        },
+                        {
+                            "name": "secondary",
+                            "default": "#356bf9",
+                            "description": "The secondary color used in the game",
+                            "type": "color"
+                        },
+                        {
+                            "name": "text",
+                            "default": "#fcfcfc",
+                            "description": "The text color used in the game",
+                            "type": "color"
+                        },
+                        {
+                            "name": "widget",
+                            "default": "#FB21C7",
+                            "description": "The widget color used in the game",
+                            "type": "color"
+                        }
+                    ],
+                    "type": "subheading"
+                }
+            ],
+            "type": "subheading"
+        },
+        {
+            "name": "settings",
+            "description": "Settings that effect game play",
+            "fields": [
+                {
+                    "description": "Timing related settings",
+                    "fields": [
+                      {
+                        "default": 60,
+                        "description": "How long will the game last",
+                        "name": "gameTime",
+                        "type": "number"
+                      }
+                    ],
+                    "name": "timers",
+                    "type": "subheading"
+                  },
+                  {
+                    "name": "recordGame",
+                    "description": "Record the game for analytics",
+                    "default": "false",
+                    "type": "bool"
+                  },
+                  {
+                    "name": "showFps",
+                    "description": "Show The frame rate per second display",
+                    "default": "false",
+                    "type": "bool"
+                  }
+            ],
+            "type": "subheading"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "default": [
+        {
+            "name": "intro",
+            "duration": 0
+        },
+        {
+            "name": "playing",
+            "timeVar": "gameTime",
+            "duration": 30
+        },
+        {
+            "name": "gameover",
+            "duration": 0
+        }
+    ]
+}

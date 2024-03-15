@@ -1,0 +1,6 @@
+{
+    "PLAYCANVAS_PROJECT_ID": 1066646,
+    "PLAYCANVAS_BRANCH_ID": "1b37885e-8671-4995-8d22-12d00525f5eb",
+    "PLAYCANVAS_BAD_FILE_REG": "^\\.|~$|jsconfig.json",
+    "PLAYCANVAS_BAD_FOLDER_REG": "^\\.|typings"
+}

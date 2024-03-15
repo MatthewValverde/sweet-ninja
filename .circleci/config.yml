@@ -1,0 +1,68 @@
+version: 2.1
+
+executors:
+  gcp_executor:
+    docker:
+      - image: gcr.io/google.com/cloudsdktool/google-cloud-cli:alpine
+  node_executor:
+    docker:
+      - image: circleci/node:14
+
+jobs:
+  build:
+    executor: node_executor
+    steps:
+      - checkout
+      - restore_cache:
+          key: cache-{{ checksum "package.json" }}-{{ checksum "mobile/package.json" }}
+      - run: yarn
+      - save_cache:
+          key: cache-{{ checksum "package.json" }}-{{ checksum "mobile/package.json" }}
+          paths:
+            - node_modules
+            - mobile/node_modules
+      - run:
+          name: Move files to persisted directory
+          command: |
+            mv mobile/www sweet-ninja
+      - store_artifacts:
+          path: sweet-ninja
+      - persist_to_workspace:
+          root: sweet-ninja
+          paths:
+            - .
+
+  gcp_deploy:
+    executor: gcp_executor
+    steps:
+      - attach_workspace:
+          at: sweet-ninja
+      - run:
+          name: Upload changed files to GCP Storage
+          command: |
+            echo $GCP_INFRA_KEY > /root/gcp-key.json
+            gcloud --quiet auth activate-service-account --key-file=/root/gcp-key.json
+            gsutil -m rsync -r sweet-ninja gs://games.versussystems.io/sweet-ninja
+            gsutil -m setmeta -r -h "Cache-control:no-cache" gs://games.versussystems.io/sweet-ninja
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build:
+          context:
+            - Globals
+          filters:
+            tags:
+              only: /.*/
+      - gcp_deploy:
+          context:
+            - Globals
+            - GcpStorage
+          filters:
+            tags:
+              only: /cpw.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - build

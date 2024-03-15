@@ -1,0 +1,24 @@
+{
+  "name": "sweet-ninja",
+  "version": "1.0.117",
+  "repository": "https://github.com/MatthewValverde/sweet-ninja.git",
+  "author": "Matthew Valverde",
+  "private": true,
+  "scripts": {
+    "precommit": "cd mobile && yarn update",
+    "dev": "yarn dev:mobile",
+    "build:mobile": "cd mobile && yarn build",
+    "install:mobile": "cd mobile && yarn",
+    "postinstall": "yarn install:mobile",
+    "pcPull": "cd mobile && yarn pullFromPlayCanvas",
+    "pcPush": "cd mobile && yarn updatePushToPlayCanvas",
+    "pcDiff": "cd mobile && yarn diffPlayCanvas",
+    "pcDownload": "cd mobile && yarn downloadPlayCanvasBuild",
+    "pcSyncAll": "cd mobile && yarn syncAll",
+    "pcLiveDev": "cd mobile && yarn dev",
+    "runLocal": "cd mobile && yarn host",
+    "yarn": "cd mobile && yarn"
+  },
+  "devDependencies": {
+  }
+}

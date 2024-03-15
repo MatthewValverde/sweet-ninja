@@ -1,0 +1,23 @@
+{
+    "design": {
+        "colors": {
+            "primary": "#228FFF",
+            "secondary": "#356bf9",
+            "text": "#fcfcfc",
+            "widget": "#FB21C7"
+        },
+        "images": {
+            "gameTitle": "https://i.imgur.com/EDSMJdx.png",
+            "logo1": "https://i.imgur.com/tVRIi4G.png"
+        },
+        "videos": {}
+    },
+    "settings": {
+        "recordGame": false,
+        "showFps": false,
+        "timers": {
+            "gameTime": 60
+        }
+    },
+    "mode": "freeplay"
+}
